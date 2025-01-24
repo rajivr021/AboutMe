@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { Typography, Button, Box } from '@mui/material';
 import { gsap } from 'gsap';
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
-import ScrollMagic from 'scrollmagic';
 import { motion } from 'framer-motion';
-import "../styles/Hero.css"
+import "../styles/Hero.css";
 
 const Hero = () => {
   const heroRef = useRef(null);
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    // Register GSAP with ScrollMagic
-    ScrollMagicPluginGsap(ScrollMagic, gsap);
-
     // Create a GSAP Timeline
     const timeline = gsap.timeline();
 
@@ -29,21 +24,6 @@ const Hero = () => {
         { scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.7)' },
         '-=0.6' // Start button animation earlier
       );
-
-    // Create ScrollMagic Controller
-    const controller = new ScrollMagic.Controller();
-
-    // ScrollMagic Scene for additional animations (if needed)
-    new ScrollMagic.Scene({
-      triggerElement: buttonRef.current,
-      triggerHook: 0.8,
-    })
-      .setTween(timeline)
-      .addTo(controller);
-
-    return () => {
-      controller.destroy(); // Cleanup the controller on unmount
-    };
   }, []);
 
   return (
@@ -90,29 +70,54 @@ const Hero = () => {
         </Typography>
       </div>
 
-      {/* Call-to-Action Button */}
+      {/* Call-to-Action Buttons */}
       <div ref={buttonRef}>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: '#64ffda',
-            color: '#0a192f',
-            padding: '12px 28px',
-            fontWeight: 600,
-            borderRadius: '30px',
-            textTransform: 'capitalize',
-            fontSize: '1rem',
-            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
-            transition: 'transform 0.3s ease',
-            '&:hover': {
-              backgroundColor: '#52e0c4',
-              transform: 'scale(1.05)',
-            },
-          }}
-          href="#contact"
-        >
-          Contact Me
-        </Button>
+        <Box sx={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: '#64ffda',
+              color: '#0a192f',
+              padding: '12px 28px',
+              fontWeight: 600,
+              borderRadius: '30px',
+              textTransform: 'capitalize',
+              fontSize: '1rem',
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
+              transition: 'transform 0.3s ease',
+              '&:hover': {
+                backgroundColor: '#52e0c4',
+                transform: 'scale(1.05)',
+              },
+            }}
+            href="#contact"
+          >
+            Contact Me
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{
+              borderColor: '#64ffda',
+              color: '#64ffda',
+              padding: '12px 28px',
+              fontWeight: 600,
+              borderRadius: '30px',
+              textTransform: 'capitalize',
+              fontSize: '1rem',
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
+              transition: 'transform 0.3s ease',
+              '&:hover': {
+                backgroundColor: '#64ffda',
+                color: '#0a192f',
+                transform: 'scale(1.05)',
+              },
+            }}
+            href="/Assets/Resume/Rajiv_Kumar_RSPL.pdf" 
+            download="Rajiv_Kumar_RSPL.pdf"
+          >
+            Download Resume
+          </Button>
+        </Box>
       </div>
 
       {/* Scroll Indicator */}

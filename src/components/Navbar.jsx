@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Box, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box, Drawer, List, ListItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,22 +11,28 @@ const Navbar = () => {
   // Detect scroll to add shadow
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Menu items with SVG icons
   const menuItems = [
-    { label: 'Home', href: '#hero' },
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '#hero', icon: '/Assets/icons/Home.gif' },
+    { label: 'About', href: '#about', icon: '/Assets/icons/About.gif' },
+    { label: 'Projects', href: '#projects', icon: '/Assets/icons/Projects.gif' },
+    { label: 'Contact', href: '#contact', icon: '/Assets/icons/Contacts.gif' },
   ];
+
+  // Hover animation
+  const handleHover = (icon) => {
+    gsap.to(icon, { scale: 1.2, rotationY: 360, duration: 0.6, ease: 'power2.out' });
+  };
+
+  const handleHoverOut = (icon) => {
+    gsap.to(icon, { scale: 1, rotationY: 0, duration: 0.6, ease: 'power2.out' });
+  };
 
   return (
     <>
@@ -41,9 +47,9 @@ const Navbar = () => {
       >
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           {/* Logo */}
-          <Typography variant="h6" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>
+          <Box sx={{ fontFamily: 'Poppins', fontWeight: 600, color: 'white', fontSize: '1.2rem' }}>
             My Portfolio
-          </Typography>
+          </Box>
 
           {/* Menu for Desktop */}
           <Box
@@ -53,20 +59,30 @@ const Navbar = () => {
             }}
           >
             {menuItems.map((item, index) => (
-              <motion.a
+              <a
                 key={index}
                 href={item.href}
-                whileHover={{ scale: 1.1, color: '#64ffda' }}
+                onMouseEnter={(e) => handleHover(e.target.querySelector('img'))}
+                onMouseLeave={(e) => handleHoverOut(e.target.querySelector('img'))}
                 style={{
                   textDecoration: 'none',
                   color: 'white',
-                  fontFamily: 'Poppins',
-                  fontWeight: 500,
-                  transition: 'color 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '8px',
                 }}
               >
-                {item.label}
-              </motion.a>
+                <img
+                  src={item.icon}
+                  alt={item.label}
+                  style={{
+                    width: '60px',
+                    height: '60px',
+                    transition: 'transform 0.3s ease',
+                  }}
+                />
+              </a>
             ))}
           </Box>
 
@@ -124,14 +140,26 @@ const Navbar = () => {
                   },
                 }}
               >
-                <ListItemText
-                  primary={item.label}
-                  primaryTypographyProps={{
-                    fontFamily: 'Poppins',
-                    fontWeight: 500,
-                    textAlign: 'center',
+                <Box
+                  onMouseEnter={(e) => handleHover(e.target.querySelector('img'))}
+                  onMouseLeave={(e) => handleHoverOut(e.target.querySelector('img'))}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '8px',
                   }}
-                />
+                >
+                  <img
+                    src={item.icon}
+                    alt={item.label}
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      transition: 'transform 0.3s ease',
+                    }}
+                  />
+                </Box>
               </ListItem>
             ))}
           </List>
