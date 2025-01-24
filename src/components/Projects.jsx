@@ -38,87 +38,123 @@ const projects = [
 
 const Projects = () => {
   return (
-    <Box id="projects" sx={{ padding: "50px 0", backgroundColor: "#f9f9f9" }}>
-      {/* Section Title */}
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{
-          fontWeight: "bold",
-          marginBottom: "40px",
-          textAlign: "center",
-          textTransform: "uppercase",
-        }}
-      >
-        My <span style={{ color: "#FF6F61" }}>Projects</span>
-      </Typography>
+    <Box
+  id="projects"
+  sx={{
+    padding: "50px 0",
+    background: "linear-gradient(135deg, #1f4037, #99f2c8)", // Gradient background
+    color: "#fff", // Ensures text is readable on gradient
+  }}
+>
+  {/* Section Title */}
+  <Typography
+    variant="h3"
+    gutterBottom
+    sx={{
+      fontWeight: "bold",
+      marginBottom: "40px",
+      textAlign: "center",
+      textTransform: "uppercase",
+      color: "#fff", // Matches the theme
+    }}
+  >
+    My <span style={{ color: "#FF6F61" }}>Projects</span>
+  </Typography>
 
-      {/* Swiper Slider */}
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={0}
-        slidesPerView={1}
-        centeredSlides={true}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 1 },
-          1024: { slidesPerView: 1 },
-        }}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }}
-        style={{ width: "100%", height: "67vh" }}
-      >
-        {projects.map((project, index) => (
-          <SwiperSlide key={index}>
-            <Box
-              className="project-card"
+  {/* Swiper Slider */}
+  <Swiper
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={0}
+    slidesPerView={1}
+    centeredSlides={true}
+    breakpoints={{
+      640: { slidesPerView: 1 },
+      768: { slidesPerView: 1 },
+      1024: { slidesPerView: 1 },
+    }}
+    navigation
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 5000 }}
+    style={{ width: "100%", height: "67vh" }}
+  >
+    {projects.map((project, index) => (
+      <SwiperSlide key={index}>
+        <Box
+          className="project-card"
+          sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "#fff", // Text color matches theme
+          }}
+        >
+          {/* Project Image */}
+         {/*  <Box
+            className="project-image"
+            sx={{
+              height: "60%",
+              width: "100%",
+              maxWidth: "800px",
+              backgroundImage: `url(${project.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              borderRadius: "10px",
+              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)", // Add shadow to images
+            }}
+          ></Box> */}
+
+          {/* Project Content */}
+          <Box
+            className="project-content"
+            sx={{
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{ fontWeight: "bold", color: "#fff" }}
+            >
+              {project.title}
+            </Typography>
+            <Typography
+              variant="body1"
+              color="textSecondary"
               sx={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
+                marginBottom: "15px",
+                color: "#e0e0e0", // Light gray for description
               }}
             >
-              {/* Project Image */}
-              <Box
-                className="project-image"
-                sx={{
-                  height: "60%",
-                  backgroundImage: `url(${project.image})`,
-                }}
-              ></Box>
+              {project.description}
+            </Typography>
+            <Button
+              className="project-button"
+              variant="contained"
+              href={project.link}
+              sx={{
+                backgroundColor: "#FF6F61",
+                color: "#fff",
+                fontWeight: "bold",
+                padding: "10px 20px",
+                borderRadius: "30px",
+                textTransform: "capitalize",
+                "&:hover": {
+                  backgroundColor: "#e8584f",
+                },
+              }}
+            >
+              View Project
+            </Button>
+          </Box>
+        </Box>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</Box>
 
-              {/* Project Content */}
-              <Box className="project-content">
-                <Typography
-                  variant="h4"
-                  gutterBottom
-                  sx={{ fontWeight: "bold" }}
-                >
-                  {project.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="textSecondary"
-                  sx={{ marginBottom: "15px" }}
-                >
-                  {project.description}
-                </Typography>
-                <Button
-                  className="project-button"
-                  variant="contained"
-                  href={project.link}
-                >
-                  View Project
-                </Button>
-              </Box>
-            </Box>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Box>
   );
 };
 
