@@ -1,0 +1,108 @@
+/* Full Width Container */
+#education {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Section Title */
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+  
+  /* Education Cards Container */
+  .education-cards {
+    display: flex;
+    gap: 20px;
+    padding: 30px 0;
+    animation: slideAnimation 15s linear infinite;
+  }
+  
+  /* Individual Education Card */
+  .education-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-width: 350px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  .education-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fade-In Effect for Cards */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Slider Animation */
+  /* @keyframes slideAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  } */
+  
+  /* Degree and Institution */
+  .education-degree {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* CGPA */
+  .education-cgpa {
+    font-size: 1.3rem;
+    color: #FF6F61;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  /* Description */
+  .education-description {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+  
+    .education-degree {
+      font-size: 1.4rem;
+    }
+  
+    .education-cgpa {
+      font-size: 1.1rem;
+    }
+  
+    .education-description {
+      font-size: 1rem;
+    }
+  }
+  
