@@ -1,48 +1,16 @@
-.footer-container {
-    background-color: #f89b0e;
-    text-align: center;
-    padding: 50px 20px;
-    color: white;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .profile-image {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid white;
-  }
-  
-  .name {
-    font-size: 2em;
-    margin: 10px 0;
-  }
-  
-  .title {
-    font-size: 1em;
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-  
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .icon {
-    font-size: 1.5em;
-    color: white;
-    transition: color 0.3s ease;
-  }
-  
-  .icon:hover {
-    color: #ffde59;
-  }
-  
+.footer-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Adjust spacing between icons */
+}
+
+.icon {
+  font-size: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-contact .icon:hover {
+  color: #ffd700; /* Hover color */
+  transform: scale(1.2); /* Icon scale on hover */
+}
