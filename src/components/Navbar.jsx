@@ -3,6 +3,7 @@ import { AppBar, Toolbar, IconButton, Box, Drawer, List, ListItem } from '@mui/m
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { gsap } from 'gsap';
+import "../styles/Navbar.css"
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

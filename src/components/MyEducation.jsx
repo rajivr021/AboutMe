@@ -48,7 +48,7 @@ const MyEducation = () => {
 
         {/* Education Cards */}
         {educationData.map((item, index) => (
-          <Box
+          <Box className='CourseContainer'
             key={index}
             sx={{
               marginBottom: '2rem',
